@@ -72,7 +72,7 @@ public class ReStartButton : MonoBehaviour
         var rotate = player.transform.root.GetComponent<HandleRotate>();
         if (rotate != null)
         {
-            rotate.canRotate = true;
+            //rotate.canRotate = true;
         }
         else
         {

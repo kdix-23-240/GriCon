@@ -27,7 +27,7 @@ public class HandleCollision : MonoBehaviour
             var rotate = playerObj.GetComponent<HandleRotate>();
             if (rotate != null)
             {
-                rotate.canRotate = false;
+                //rotate.canRotate = false;
                 Debug.Log("[HandleCollision] 回転停止（Player経由）");
             }
 

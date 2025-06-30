@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StageSelectButton : MonoBehaviour
+public class Start : MonoBehaviour
 {
     public void OnClick()
     {
@@ -27,5 +27,8 @@ public class StageSelectButton : MonoBehaviour
     {
         // シーンを再読み込み
         UnityEngine.SceneManagement.SceneManager.LoadScene("StageSelect");
+        // "Get_Information (Persistent)"を探して変数に格納
+        var obj = GameObject.Find("Get_Information (Persistent)");
+        obj.AddComponent<ControllerObserver>(); // ControllerObserverを追加
     }
 }

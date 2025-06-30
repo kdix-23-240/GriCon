@@ -6,11 +6,11 @@ public class WarningPresenter : MonoBehaviour
 {
     private WarningModel warningModel;
     public WarningModel WarningModel { get { return warningModel; } }
-    private WarningSender controllerPresenter;
+    private WarningSender warningSender;
     private void Awake()
     {
         warningModel = new WarningModel();
-        controllerPresenter = GetComponent<WarningSender>();
+        warningSender = GetComponent<WarningSender>();
     }
     private void Start()
     {
@@ -22,7 +22,7 @@ public class WarningPresenter : MonoBehaviour
         {
             Debug.Log("WarningPresenter:WarningLevelÇ™ïœçXÇ≥ÇÍÇ‹ÇµÇΩ");
             Debug.Log($"WarningPresenter:WarningLevel = {level}");
-            controllerPresenter.OnChangeWarningLevel(level);
+            warningSender.OnChangeWarningLevel(level);
         }).AddTo(this);
     }
 }
