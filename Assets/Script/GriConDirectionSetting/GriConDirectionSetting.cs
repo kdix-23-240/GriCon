@@ -9,7 +9,6 @@ public class GriConDirectionSetting : MonoBehaviour
     private bool isSet4 = false; // 4方向目の設定が完了したかどうか
     private float flameCounter = 0f; // フレームカウンター
     [SerializeField] private float selectTime = 2f; // ステージ選択のための時間閾値
-    public static string stageName = null; // ステージ名
 
     private void Update()
     {
@@ -27,8 +26,7 @@ public class GriConDirectionSetting : MonoBehaviour
         if(flameCounter >= selectTime)
         {
             Debug.Log("全方向の設定が完了しました。シーンを変更します。");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(stageName);
-            stageName = null; // シーン変更後はステージ名をリセット
+            UnityEngine.SceneManagement.SceneManager.LoadScene(StageName.GetInstance().StageNameText);
         }
     }
 

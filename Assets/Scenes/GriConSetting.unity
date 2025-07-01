@@ -378,8 +378,47 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2047248478512766399, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376023742}
+    - targetCorrespondingSourceObject: {fileID: 2047248478512766399, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 376023741}
   m_SourcePrefab: {fileID: 100100000, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+--- !u!1 &376023740 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2047248478512766399, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+  m_PrefabInstance: {fileID: 376023739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &376023741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376023740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6fcfd045c93a84497342941a478f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetRotateX: 0
+  offsetRotateY: 0
+  offsetRotateZ: 90
+--- !u!114 &376023742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376023740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e195336d4751b164eb930766e1f84d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bendWall: 4
 --- !u!1 &1022066718
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,6 @@ using UnityEngine;
 public class StageSelect : MonoBehaviour, ITimerCompletedAction
 {
     [SerializeField] private Camera stageSelectCamera;
-    private string stageName = null; // ステージ名を格納する変数
 
     public void OnTimerCompleted()
     {
@@ -46,8 +45,7 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
     {
         // シーンを変更する処理をここに実装
         Debug.Log("シーンを変更: " + stageNum);
-        stageName = "Stage" + stageNum.ToString(); // ステージ名を設定
-        GriConDirectionSetting.stageName = stageName; // GriConDirectionSettingにステージ名を渡す
+        StageName.GetInstance().StageNameText = "Stage" + stageNum.ToString(); // ステージ名を設定
         UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
     }
 }
