@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
@@ -29,13 +30,8 @@ public class TimerModel
             yield return null;
         }
 
-        if (time.Value >= duration)
-        {
-            time.Value = duration;
-            IsCompleted.Value = true;
-            //Debug.Log($"[UniversalTimer] Timer ended after {time} seconds.");
-            Reset(); // タイマーをリセット
-        }
+        Debug.Log("Timer completed.");
+        IsCompleted.Value = true; // タイマー完了を通知
     }
 
     /// <summary>

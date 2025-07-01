@@ -658,10 +658,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 238611996}
   - {fileID: 1391887956}
   - {fileID: 606488285}
   - {fileID: 175815383}
+  - {fileID: 238611996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -996,6 +996,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711453366}
   m_CullTransparentMesh: 1
+--- !u!20 &759875025 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8315208111775533755, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+  m_PrefabInstance: {fileID: 1933470547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &797447451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1177,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -2971,8 +2976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
-    - {fileID: 496254206524829664, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
-    - {fileID: 2914558761643843986, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3037,7 +3041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerPresenter: {fileID: 1948707887}
-  gripDuration: 2
+  duration: 2
 --- !u!1 &1948707885
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3053,7 @@ GameObject:
   - component: {fileID: 1948707888}
   - component: {fileID: 1948707887}
   - component: {fileID: 1948707886}
+  - component: {fileID: 1948707889}
   m_Layer: 0
   m_Name: TimeCounter
   m_TagString: Untagged
@@ -3096,6 +3101,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1948707889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948707885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40365ed199737ff4b9e317074cc8e382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageSelectCamera: {fileID: 759875025}
 --- !u!1 &1951964095
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,43 +1,13 @@
 using System.Drawing.Drawing2D;
 using UnityEngine;
-public class StageSelect : MonoBehaviour
+public class StageSelect : MonoBehaviour, ITimerCompletedAction
 {
     [SerializeField] private Camera stageSelectCamera;
-    [SerializeField] private float bendWall = 4f; // 曲げセンサーの閾値
-    private bool isGrip = false; 
-    [SerializeField] private float selectTime = 1f; // ステージ選択のための時間閾値
-    private float flameCounter = 0f; // フレームカウンター
     private string stageName = null; // ステージ名を格納する変数
-    private TimerModel timerModel; // TimerModelのインスタンス
 
-    void Awake()
+    public void OnTimerCompleted()
     {
-        timerModel = new TimerModel(); // TimerModelのインスタンスを生成
-    }
-
-    private void Start()
-    {
-    }
-
-    void Update()
-    {
-        if (CheckGrip())
-        {
-
-            if (flameCounter >= selectTime)
-            {
-                Debug.Log("ステージを決定");
-                int stageNum = DecideStage(); // ステージ番号を決定
-                if (stageNum >= 0) // 有効なステージ番号が決定された場合
-                {
-                    ChangeScene(stageNum); // シーンを変更
-                }
-                else
-                {
-                    Debug.LogWarning("無効なステージ番号が選択されました。");
-                }
-            }   
-        }
+        ChangeScene(DecideStage()); // タイマー完了時にステージを決定し、シーンを変更
     }
 
     /// <summary>
@@ -79,19 +49,5 @@ public class StageSelect : MonoBehaviour
         stageName = "Stage" + stageNum.ToString(); // ステージ名を設定
         GriConDirectionSetting.stageName = stageName; // GriConDirectionSettingにステージ名を渡す
         UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
-    }
-
-    private bool CheckGrip()
-    {
-        if(isGrip)
-        {
-            Debug.LogWarning("握っている");
-            return true;
-        }
-        else
-        {
-            Debug.Log("握っていない");
-            return false;
-        }   
     }
 }
