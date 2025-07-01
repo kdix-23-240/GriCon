@@ -13,44 +13,44 @@ public class WarningSender : MonoBehaviour
         switch (level)
         {
             case 1:
-                Debug.Log("---------------------------------------------------");
-                Debug.Log("WarningSender:WarningLevel3 を検出");
-                Debug.Log("WarningSender:棒に近づきすぎです、立て直してください");
-                Debug.Log("---------------------------------------------------");
+                //Debug.Log("---------------------------------------------------");
+                //Debug.Log("WarningSender:WarningLevel3 を検出");
+                //Debug.Log("WarningSender:棒に近づきすぎです、立て直してください");
+                //Debug.Log("---------------------------------------------------");
                 SendWarning('1');
                 break;
             case 2:
-                Debug.Log("---------------------------------------------------");
-                Debug.Log("WarningSender:WarningLevel2 を検出");
-                Debug.Log("WarningSender:棒に近づきました、気を付けてください");
-                Debug.Log("---------------------------------------------------");
+                //Debug.Log("---------------------------------------------------");
+                //Debug.Log("WarningSender:WarningLevel2 を検出");
+                //Debug.Log("WarningSender:棒に近づきました、気を付けてください");
+                //Debug.Log("---------------------------------------------------");
                 SendWarning('2');
                 break;
             case 3:
-                Debug.Log("---------------------------------------------------");
-                Debug.Log("WarningSender:WarningLevel1 を検出");
-                Debug.Log("WarningSender:棒に少し近づきました");
-                Debug.Log("---------------------------------------------------");
+                //Debug.Log("---------------------------------------------------");
+                //Debug.Log("WarningSender:WarningLevel1 を検出");
+                //Debug.Log("WarningSender:棒に少し近づきました");
+                //Debug.Log("---------------------------------------------------");
                 SendWarning('3');
                 break;
             case 4:
-                Debug.Log("---------------------------------------------------");
-                Debug.Log("WarningSender:WarningLevel4 を検出");
-                Debug.Log("WarningSender:棒に触れました、ゲームオーバーです");
-                Debug.Log("---------------------------------------------------");
+                //Debug.Log("---------------------------------------------------");
+                //Debug.Log("WarningSender:WarningLevel4 を検出");
+                //Debug.Log("WarningSender:棒に触れました、ゲームオーバーです");
+                //Debug.Log("---------------------------------------------------");
                 StartWarningSequence();
                 break;
             case 5:
-                Debug.Log("---------------------------------------------------");
-                Debug.Log("WarningSender:安全な状態に戻りました");
-                Debug.Log("---------------------------------------------------");
+                //    Debug.Log("---------------------------------------------------");
+                //    Debug.Log("WarningSender:安全な状態に戻りました");
+                //    Debug.Log("---------------------------------------------------");
                 SendWarning('5');
                 break;
             default:
-                Debug.Log("---------------------------------------------------");
-                Debug.LogWarning("WarningSender:不正な値の警告です");
-                Debug.LogWarning("[WarningSender] Invalid warning level: " + level);
-                Debug.Log("---------------------------------------------------");
+                //    Debug.Log("---------------------------------------------------");
+                //    Debug.LogWarning("WarningSender:不正な値の警告です");
+                //    Debug.LogWarning("[WarningSender] Invalid warning level: " + level);
+                //    Debug.Log("---------------------------------------------------");
                 break;
         }
     }
@@ -73,12 +73,12 @@ public class WarningSender : MonoBehaviour
         isWarningSequenceRunning = true;
 
         SendWarning('4');
-        Debug.Log("[WarningManager] Sent '4'");
+        //Debug.Log("[WarningManager] Sent '4'");
 
         yield return new WaitForSeconds(bilibiliTime);
 
         SendWarning('5');
-        Debug.Log("[WarningManager] Sent '5'");
+        //Debug.Log("[WarningManager] Sent '5'");
 
         isWarningSequenceRunning = false;
     }

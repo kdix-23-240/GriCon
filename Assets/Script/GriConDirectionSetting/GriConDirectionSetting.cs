@@ -42,7 +42,7 @@ public class GriConDirectionSetting : MonoBehaviour
         Camera camera = GetComponentInChildren<Camera>();
         if (camera == null)
         {
-            Debug.LogError("GriConDirectionSetting: 子オブジェクトにカメラが見つかりません。");
+            //Debug.LogError("GriConDirectionSetting: 子オブジェクトにカメラが見つかりません。");
             return;
         }
         RaycastHit hit;
@@ -78,7 +78,7 @@ public class GriConDirectionSetting : MonoBehaviour
                 {
                     directionObjects[i].OnUnchecked();
                 }
-                Debug.Log($"方向 {i + 1} のオブジェクトが見つかりません。設定は完了しません。");
+                //Debug.Log($"方向 {i + 1} のオブジェクトが見つかりません。設定は完了しません。");
                 switch (i)
                 {
                     case 0: isSet1 = false; break;
@@ -94,12 +94,12 @@ public class GriConDirectionSetting : MonoBehaviour
     {
         if (isSet1 && isSet2 && isSet3 && isSet4)
         {
-            Debug.Log("全方向の設定が完了しました。");
+            //Debug.Log("全方向の設定が完了しました。");
             return true;
         }
         else
         {
-            Debug.Log("全方向の設定が完了していません。");
+            //Debug.Log("全方向の設定が完了していません。");
             return false;
         }
     }

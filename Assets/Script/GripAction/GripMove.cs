@@ -16,7 +16,7 @@ public class GripMove : MonoBehaviour, IGripAction
     public void ExitGrip()
     {
         // Implement the logic for exiting the grip here
-        Debug.Log("Grip exited");
+        //Debug.Log("Grip exited");
     }
 
     /// <summary>
