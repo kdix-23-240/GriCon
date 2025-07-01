@@ -45,4 +45,9 @@ public class TimerPresenter : MonoBehaviour
         model.Reset();
         Debug.Log("Timer has been reset.");
     }
+    
+    public TimerModel GetModel()
+    {
+        return model; // ƒ‚ƒfƒ‹‚ð•Ô‚·
+    }
 }

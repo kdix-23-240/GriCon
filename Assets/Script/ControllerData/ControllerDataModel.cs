@@ -1,17 +1,17 @@
 using UniRx;
 
-public class ControllerModel
+public class ControllerDataModel
 {
     // シングルトンのインスタンスを保持する静的なプロパティ
-    private static ControllerModel _instance;
-    public static ControllerModel GetInstance
+    private static ControllerDataModel _instance;
+    public static ControllerDataModel GetInstance
     {
         get
         {
             // インスタンスがまだ存在しない場合、新しく作成する
             if (_instance == null)
             {
-                _instance = new ControllerModel();
+                _instance = new ControllerDataModel();
             }
             return _instance;
         }
@@ -25,7 +25,7 @@ public class ControllerModel
     public ReactiveProperty<float> Bend { get; private set; }
 
     // コンストラクタをprivateにすることで、外部からのインスタンス化を防ぐ
-    private ControllerModel()
+    private ControllerDataModel()
     {
         RotateX = new ReactiveProperty<float>(0f);
         RotateY = new ReactiveProperty<float>(0f);

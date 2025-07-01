@@ -69,7 +69,7 @@ public class ReStartButton : MonoBehaviour
         }
 
         // 回転（HandleRotate）を再び有効にする
-        var rotate = player.transform.root.GetComponent<HandleRotate>();
+        var rotate = player.transform.root.GetComponent<ControllerDataViewRotate>();
         if (rotate != null)
         {
             //rotate.canRotate = true;

@@ -1,12 +1,9 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 /// <summary>
 /// プレイヤーまたはオブジェクトをX/Y/Z軸方向に傾けるスクリプト
 /// シリアル通信から得た角度データに基づいて、姿勢を更新する
 /// </summary>
-public class HandleRotate : MonoBehaviour
+public class ControllerDataViewRotate : MonoBehaviour
 {
     [SerializeField] private float offsetRotateX = 0f; // ピッチのオフセット（視覚補正用）
     [SerializeField] private float offsetRotateY = 0f; // ヨーのオフセット（視覚補正用）

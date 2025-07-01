@@ -24,7 +24,7 @@ public class HandleCollision : MonoBehaviour
 
             // 回転スクリプトを無効化
             var playerObj = transform.root;
-            var rotate = playerObj.GetComponent<HandleRotate>();
+            var rotate = playerObj.GetComponent<ControllerDataViewRotate>();
             if (rotate != null)
             {
                 //rotate.canRotate = false;
