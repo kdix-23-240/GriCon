@@ -1,40 +1,42 @@
-using System.Drawing.Text;
+using System;
 using UnityEngine;
 
 public class GriConDirectionSetting : MonoBehaviour
 {
-    private bool isSet1 = false; // 1方向目の設定が完了したかどうか
-    private bool isSet2 = false; // 2方向目の設定が完了したかどうか
-    private bool isSet3 = false; // 3方向目の設定が完了したかどうか
-    private bool isSet4 = false; // 4方向目の設定が完了したかどうか
-    private float flameCounter = 0f; // フレームカウンター
-    [SerializeField] private float selectTime = 2f; // ステージ選択のための時間閾値
+    private bool isSet1 = false;
+    private bool isSet2 = false;
+    private bool isSet3 = false;
+    private bool isSet4 = false;
+    [SerializeField] private TimerPresenter timer;
+    [SerializeField] private float selectTime = 2f;
+
+    // 各方向のGriConDirectionBaseを格納
+    [SerializeField] private GriConDirectionBase[] directionObjects = new GriConDirectionBase[4];
+
+    void Start()
+    {
+        if (timer == null)
+        {
+            Debug.LogError("GriConDirectionSetting: タイマーオブジェクトが設定されていません。");
+            return;
+        }
+        // directionObjectsはInspectorでアサインしてください
+    }
 
     private void Update()
     {
-        CheckIsSet(); // 各方向の設定を確認
+        CheckIsSet();
 
         if (CheckIsAllSet())
         {
-            flameCounter += Time.deltaTime; // フレームカウンターを更新
+            timer.StartTimer(selectTime);
         }
         else
         {
-            flameCounter = 0f; // 全方向の設定が完了していない場合はカウンターをリセット
-        }
-
-        if(flameCounter >= selectTime)
-        {
-            Debug.Log("全方向の設定が完了しました。シーンを変更します。");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(StageName.GetInstance().StageNameText);
+            timer.ResetTimer();
         }
     }
 
-    /// <summary>
-    /// このオブジェクトの子コンポーネントのカメラを取得し、そのカメラから６方向にrayを飛ばす
-    /// 各方向に当たったオブジェクトの名前を取得し、その番号の方向の設定を完了する
-    /// rayが外れたら設定を完了しない
-    /// </summary>
     private void CheckIsSet()
     {
         Camera camera = GetComponentInChildren<Camera>();
@@ -46,19 +48,21 @@ public class GriConDirectionSetting : MonoBehaviour
         RaycastHit hit;
         Vector3[] directions = new Vector3[]
         {
-            camera.transform.forward, // 前方
-            -camera.transform.forward, // 後方
-            camera.transform.right, // 右
-            -camera.transform.right, // 左
-            camera.transform.up, // 上
-            -camera.transform.up // 下
+            camera.transform.forward,
+            -camera.transform.forward,
+            camera.transform.right,
+            -camera.transform.right
         };
         for (int i = 0; i < directions.Length; i++)
         {
-            if (Physics.Raycast(camera.transform.position, directions[i], out hit))
+            bool isHit = Physics.Raycast(camera.transform.position, directions[i], out hit);
+            if (isHit)
             {
-                string objectName = hit.collider.gameObject.name;
-                Debug.Log($"方向 {i + 1} のオブジェクト名: {objectName}");
+                var dirBase = hit.collider.gameObject.GetComponent<GriConDirectionBase>();
+                if (dirBase != null)
+                {
+                    dirBase.OnChecked();
+                }
                 switch (i)
                 {
                     case 0: isSet1 = true; break;
@@ -69,6 +73,11 @@ public class GriConDirectionSetting : MonoBehaviour
             }
             else
             {
+                // InspectorでdirectionObjects[i]に該当オブジェクトをセットしておく
+                if (directionObjects[i] != null)
+                {
+                    directionObjects[i].OnUnchecked();
+                }
                 Debug.Log($"方向 {i + 1} のオブジェクトが見つかりません。設定は完了しません。");
                 switch (i)
                 {
@@ -83,7 +92,7 @@ public class GriConDirectionSetting : MonoBehaviour
 
     private bool CheckIsAllSet()
     {
-        if(isSet1 && isSet2 && isSet3 && isSet4)
+        if (isSet1 && isSet2 && isSet3 && isSet4)
         {
             Debug.Log("全方向の設定が完了しました。");
             return true;

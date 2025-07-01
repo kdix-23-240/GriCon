@@ -46,6 +46,7 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
         // シーンを変更する処理をここに実装
         Debug.Log("シーンを変更: " + stageNum);
         StageName.GetInstance().StageNameText = "Stage" + stageNum.ToString(); // ステージ名を設定
+        Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
     }
 }
