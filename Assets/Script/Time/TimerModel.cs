@@ -29,6 +29,7 @@ public class TimerModel
         ElapsedTime = duration;
         IsCompleted.Value = true;
         Debug.Log($"[UniversalTimer] Timer ended after {ElapsedTime} seconds.");
+        Reset(); // タイマーをリセット
     }
 
     /// <summary>
