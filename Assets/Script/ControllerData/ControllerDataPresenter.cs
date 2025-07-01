@@ -4,14 +4,20 @@ using UniRx;
 public class ControllerDataPresenter : MonoBehaviour
 {
     private ControllerDataViewRotate rotateView;
-    [SerializeField] private TimerPresenter timerPresenter;
+    [SerializeField] private float bendWall = 4f;
+    private IGripAction gripAction; // GripAction interface for handling grip actions
 
     void Awake()
     {
         rotateView = GetComponent<ControllerDataViewRotate>();
+        gripAction = GetComponent<IGripAction>();
     }
     void Start()
     {
+        if(gripAction == null)
+        {
+            Debug.LogError("ControllerDataPresenter:GripActionがアタッチされていません");
+        }
         Bind();
     }
 
@@ -41,7 +47,7 @@ public class ControllerDataPresenter : MonoBehaviour
         ControllerDataModel.GetInstance.Bend
         .Subscribe(bend =>
         {
-            Debug.Log($"ControllerPresenter: 握ったときの処理がまだBindされていない");
+            gripAction.OnGrip(bend, bendWall);
         })
         .AddTo(this);
     }

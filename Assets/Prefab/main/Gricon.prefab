@@ -178,9 +178,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f69a86840960f5b40b1c153fd706d04e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 496254206524829664}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f69a86840960f5b40b1c153fd706d04e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2914558761643843986}
   m_SourcePrefab: {fileID: 100100000, guid: f69a86840960f5b40b1c153fd706d04e, type: 3}
 --- !u!4 &1667063073363855109 stripped
@@ -193,21 +190,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f69a86840960f5b40b1c153fd706d04e, type: 3}
   m_PrefabInstance: {fileID: 1200244988059541742}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &496254206524829664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047248478512766399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50370217ae55242dea982d62742f4c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetRotateX: 0
-  offsetRotateY: 0
-  offsetRotateZ: 90
 --- !u!114 &2914558761643843986
 MonoBehaviour:
   m_ObjectHideFlags: 0
