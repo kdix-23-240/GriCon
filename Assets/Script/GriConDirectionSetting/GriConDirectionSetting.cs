@@ -1,5 +1,8 @@
-using System;
 using UnityEngine;
+
+/// <summary>
+/// コントローラーの角度調整をするクラス
+/// </summary>
 
 public class GriConDirectionSetting : MonoBehaviour
 {
@@ -20,12 +23,11 @@ public class GriConDirectionSetting : MonoBehaviour
             Debug.LogError("GriConDirectionSetting: タイマーオブジェクトが設定されていません。");
             return;
         }
-        // directionObjectsはInspectorでアサインしてください
     }
 
     private void Update()
     {
-        CheckIsSet();
+        CheckIsSet(); // 常に基準に合うかどうかを確認する
 
         if (CheckIsAllSet())
         {
@@ -37,8 +39,12 @@ public class GriConDirectionSetting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 基準オブジェクトを使って角度があっているか判断するクラス
+    /// </summary>
     private void CheckIsSet()
     {
+        // カメラから
         Camera camera = GetComponentInChildren<Camera>();
         if (camera == null)
         {
@@ -53,6 +59,8 @@ public class GriConDirectionSetting : MonoBehaviour
             camera.transform.right,
             -camera.transform.right
         };
+
+        // 各方向にRayを飛ばして角度が合えばそれに対応する真偽値を設定する
         for (int i = 0; i < directions.Length; i++)
         {
             bool isHit = Physics.Raycast(camera.transform.position, directions[i], out hit);
@@ -73,7 +81,7 @@ public class GriConDirectionSetting : MonoBehaviour
             }
             else
             {
-                // InspectorでdirectionObjects[i]に該当オブジェクトをセットしておく
+                // 基準から離れると基準オブジェクトの色を変える
                 if (directionObjects[i] != null)
                 {
                     directionObjects[i].OnUnchecked();

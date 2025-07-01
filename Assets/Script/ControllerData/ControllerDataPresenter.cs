@@ -5,7 +5,7 @@ public class ControllerDataPresenter : MonoBehaviour
 {
     private ControllerDataViewRotate rotateView;
     [SerializeField] private float bendWall = 4f;
-    private IGripAction gripAction; // GripAction interface for handling grip actions
+    private IGripAction gripAction; // コントローラーを握ったときの動作を保持
 
     void Awake()
     {
@@ -21,6 +21,10 @@ public class ControllerDataPresenter : MonoBehaviour
         Bind();
     }
 
+    /// <summary>
+    /// コントローラーが傾いたらそれを描画する
+    /// 握られたらGripActionを呼び出す
+    /// </summary>
     private void Bind()
     {
         ControllerDataModel.GetInstance.RotateX

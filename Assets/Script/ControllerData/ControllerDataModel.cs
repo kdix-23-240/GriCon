@@ -1,5 +1,10 @@
 using UniRx;
 
+/// <summary>
+/// コントローラーの傾きと握り具合を管理するクラス
+/// シングルトンを採用
+/// DontDestroyOnLoadで実装しようとしたが、オブジェクトの参照がうまくいかなかったのでシングルトン
+/// </summary>
 public class ControllerDataModel
 {
     // シングルトンのインスタンスを保持する静的なプロパティ

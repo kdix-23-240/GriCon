@@ -1,7 +1,9 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class GriConDirectiojnCompleted : MonoBehaviour, ITimerCompletedAction
+/// <summary>
+/// コントローラーの角度調整画面で全方向の設定が完了した際に呼び出されるクラス
+/// </summary>
+public class GriConDirectionCompleted : MonoBehaviour, ITimerCompletedAction
 {
 	public void OnTimerCompleted()
 	{

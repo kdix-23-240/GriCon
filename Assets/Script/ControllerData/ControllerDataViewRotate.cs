@@ -34,6 +34,9 @@ public class ControllerDataViewRotate : MonoBehaviour
         //Debug.Log($"RotateZ: {currentZ} (offset: {offsetRotateZ})");
     }
 
+    /// <summary>
+    /// コントローラーの傾きを反映させる
+    /// </summary>
     private void ApplyRotation()
     {
         // X:ピッチ, Y:ヨー, Z:ロール

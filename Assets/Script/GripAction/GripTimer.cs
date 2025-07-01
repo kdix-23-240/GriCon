@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class GripTimer : MonoBehaviour, IGripAction
 {
-    [SerializeField] private TimerPresenter timerPresenter; // TimertimerPresenter to manage the timer
-    [SerializeField] private float duration = 2f; // Duration for the timer in seconds
+    [SerializeField] private TimerPresenter timerPresenter;
+    [SerializeField] private float duration = 2f; // 何秒数えるか
 
-    void Awake()
-    {
-
-    }
     void Start()
     {
         if (timerPresenter == null)
@@ -16,12 +12,14 @@ public class GripTimer : MonoBehaviour, IGripAction
             Debug.LogError("GripTimer:タイマーオブジェクトがアタッチされていません    ");
         }
     }
+
     public void OnGrip(float bend)
     {
-        timerPresenter.StartTimer(duration); // Start the timer when grip is detected
+        timerPresenter.StartTimer(duration); // 時間計測開始
     }
+
     public void ExitGrip()
     {
-        timerPresenter.ResetTimer(); // Reset the timer
+        timerPresenter.ResetTimer(); // 時間計測終了、リセット
     }
 }

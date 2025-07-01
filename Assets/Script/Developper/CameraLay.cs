@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// デバッグ用のクラス
+/// コントローラーの角度を可視化するために赤い線を描画
+/// </summary>
 public class CameraLay : MonoBehaviour
 {
     void Update()

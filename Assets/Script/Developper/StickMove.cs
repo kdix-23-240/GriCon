@@ -1,5 +1,9 @@
 using UnityEngine;  
 
+/// <summary>
+/// デバッグ用のクラス
+/// ステージ中のスティックを操作してプレイヤーの当たり判定を確認する
+/// </summary>
 public class StickMove : MonoBehaviour
 {
     void Update()

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// デバッグ用のクラス
+/// 握っている時間を表示する
+/// </summary>
 public class TimerText : MonoBehaviour
 {
     void Start()
