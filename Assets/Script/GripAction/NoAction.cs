@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NoAction : MonoBehaviour, IGripAction
 {
-    public void OnGrip()
+    public void OnGrip(float bend)
     {
         // Grip action does nothing
     }

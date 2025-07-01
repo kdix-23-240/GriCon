@@ -16,7 +16,7 @@ public class GripTimer : MonoBehaviour, IGripAction
             Debug.LogError("GripTimer:タイマーオブジェクトがアタッチされていません    ");
         }
     }
-    public void OnGrip()
+    public void OnGrip(float bend)
     {
         timerPresenter.StartTimer(duration); // Start the timer when grip is detected
     }

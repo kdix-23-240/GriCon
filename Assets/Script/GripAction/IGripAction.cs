@@ -1,5 +1,5 @@
 public interface IGripAction
 {
-    void OnGrip();
+    void OnGrip(float bend);
     void ExitGrip();
 }

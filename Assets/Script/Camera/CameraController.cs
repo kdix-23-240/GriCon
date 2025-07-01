@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
     private float newXPosition;
     private float newYRotation;
     private int clickCount = 0;
-    private PlayerMove playerMove;
+    private GripMove playerMove;
 
     void Start()
     {

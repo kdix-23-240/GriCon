@@ -49,7 +49,7 @@ public class ControllerDataPresenter : MonoBehaviour
         {
             if(bendWall < bend)
             {
-                gripAction.OnGrip();
+                gripAction.OnGrip(bend);
             }
             else
             {
