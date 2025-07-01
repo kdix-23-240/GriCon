@@ -47,7 +47,14 @@ public class ControllerDataPresenter : MonoBehaviour
         ControllerDataModel.GetInstance.Bend
         .Subscribe(bend =>
         {
-            gripAction.OnGrip(bend, bendWall);
+            if(bendWall < bend)
+            {
+                gripAction.OnGrip(bend);
+            }
+            else
+            {
+                gripAction.ExitGrip();
+            }
         })
         .AddTo(this);
     }

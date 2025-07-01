@@ -17,21 +17,21 @@ public class ControllerDataViewRotate : MonoBehaviour
     {
         currentX = rotateX + offsetRotateX;
         ApplyRotation();
-        Debug.Log($"RotateX: {currentX} (offset: {offsetRotateX})");
+        //Debug.Log($"RotateX: {currentX} (offset: {offsetRotateX})");
     }
 
     public void RotateY(float rotateY)
     {
         currentY = rotateY + offsetRotateY;
         ApplyRotation();
-        Debug.Log($"RotateY: {currentY} (offset: {offsetRotateY})");
+        //Debug.Log($"RotateY: {currentY} (offset: {offsetRotateY})");
     }
 
     public void RotateZ(float rotateZ)
     {
         currentZ = rotateZ + offsetRotateZ;
         ApplyRotation();
-        Debug.Log($"RotateZ: {currentZ} (offset: {offsetRotateZ})");
+        //Debug.Log($"RotateZ: {currentZ} (offset: {offsetRotateZ})");
     }
 
     private void ApplyRotation()

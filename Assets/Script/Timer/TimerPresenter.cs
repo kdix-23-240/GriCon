@@ -23,10 +23,24 @@ public class TimerPresenter : MonoBehaviour
     {
         // タイマーコルーチンを開始
         StartCoroutine(model.TimerCoroutine(duration));
+        //Debug.Log($"Timer started for {duration} seconds.");
     }
 
+    public void ResetTimer()
+    {
+        // タイマーをリセット
+        model.Reset();
+        //Debug.Log("Timer has been reset.");
+    }
     private void Bind()
     {
+
+        model.time.Subscribe(time =>
+        {
+            // タイマーの時間をビューに反映
+            view.UpdateTime(time);
+        })
+           .AddTo(this); // このGameObjectが破棄されると自動的に購読解除されるようにする
         model.IsCompleted
             .Subscribe(isCompleted =>
             {
@@ -39,13 +53,6 @@ public class TimerPresenter : MonoBehaviour
             .AddTo(this); // このGameObjectが破棄されると自動的に購読解除されるようにする
     }
 
-    public void ResetTimer()
-    {
-        // タイマーをリセット
-        model.Reset();
-        Debug.Log("Timer has been reset.");
-    }
-    
     public TimerModel GetModel()
     {
         return model; // モデルを返す

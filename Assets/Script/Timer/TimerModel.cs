@@ -8,28 +8,34 @@ using UnityEngine;
 /// </summary>
 public class TimerModel
 {
+    public ReactiveProperty<float> time { get; } = new ReactiveProperty<float>(0f);
     public ReactiveProperty<bool> IsCompleted { get; } = new ReactiveProperty<bool>(false);
-    public float ElapsedTime { get; private set; } = 0f;
+    private bool isRunning = false;
 
     /// <summary>
     /// タイマーコルーチン
+    /// 非同期処理の途中でisRunningがfalseになった場合は終了
     /// </summary>
     /// <param name="duration">タイマー時間（秒）</param>
     /// <returns></returns>
     public IEnumerator TimerCoroutine(float duration)
     {
-        IsCompleted.Value = false;
-        ElapsedTime = 0f;
+        isRunning = true;
         float startTime = Time.time;
         while (Time.time - startTime < duration)
         {
-            ElapsedTime = Time.time - startTime;
+            if (!isRunning) yield break; // isRunningがfalseなら終了
+            time.Value = Time.time - startTime;
             yield return null;
         }
-        ElapsedTime = duration;
-        IsCompleted.Value = true;
-        Debug.Log($"[UniversalTimer] Timer ended after {ElapsedTime} seconds.");
-        Reset(); // タイマーをリセット
+
+        if (time.Value >= duration)
+        {
+            time.Value = duration;
+            IsCompleted.Value = true;
+            //Debug.Log($"[UniversalTimer] Timer ended after {time} seconds.");
+            Reset(); // タイマーをリセット
+        }
     }
 
     /// <summary>
@@ -37,7 +43,8 @@ public class TimerModel
     /// </summary>
     public void Reset()
     {
+        isRunning = false;
         IsCompleted.Value = false;
-        ElapsedTime = 0f;
+        time.Value = 0f;
     }
 }
