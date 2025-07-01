@@ -2347,6 +2347,11 @@ PrefabInstance:
       insertIndex: 7
       addedObject: {fileID: 8889022676275008799}
   m_SourcePrefab: {fileID: 100100000, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
+--- !u!1 &6584999589011107899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 271844399705374855, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
+  m_PrefabInstance: {fileID: 6584999589011107898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8889022676275008797 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7200864189133152200, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
@@ -2364,11 +2369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e415cc4c49c1d53428981bc1acb43201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleHandle: {fileID: 0}
+  circleHandle: {fileID: 6584999589011107899}
   firstPlayerPositionX: 0
   firstPlayerPositionY: 0
   firstPlayerPositionZ: 0
-  speedRate: 1
+  speedRate: 0.1
 --- !u!114 &8889022676275008800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2383,7 +2388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetRotateX: 0
   offsetRotateY: 0
-  offsetRotateZ: 90
+  offsetRotateZ: 0
 --- !u!114 &8889022676275008801
 MonoBehaviour:
   m_ObjectHideFlags: 0
