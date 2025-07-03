@@ -9,6 +9,7 @@ TagManager:
   - PlayerCamera
   - collisionWarning
   - Goal
+  - SelectBase
   layers:
   - Default
   - TransparentFX
