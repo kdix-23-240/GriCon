@@ -33,13 +33,12 @@ public class SelectedUIAnimationController : MonoBehaviour
         {
             Debug.Log("ヒットしたオブジェクト: " + hit.collider.gameObject.name);
             hit.collider.gameObject.GetComponent<SelectedUIAnimation>()?.Show();
-        }
-        else
-        {
-            Debug.LogWarning("レイキャストでオブジェクトがヒットしませんでした。");
-            foreach (var obj in stages)
+            for(int i = 0; i < stages.Length; i++)
             {
-                obj.GetComponent<SelectedUIAnimation>()?.Hide(); // 全てのアニメーションを停止
+                if (stages[i] != hit.collider.gameObject)
+                {
+                    stages[i].GetComponent<SelectedUIAnimation>()?.Hide();
+                }
             }
         }
     }
