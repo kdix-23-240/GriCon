@@ -1,4 +1,3 @@
-using System.Drawing.Drawing2D;
 using UnityEngine;
 public class StageSelect : MonoBehaviour, ITimerCompletedAction
 {
@@ -10,42 +9,39 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
     }
 
     /// <summary>
-    /// カメラが向いている方向にあるオブジェクトの名前を数字として取得する
-    /// それをステージ番号として使用する
-    /// 最後にこのステージ番号を返す
+    /// カメラが向いている方向にあるオブジェクトの名前を取得する
+    /// それをステージ名として使用する
+    /// 最後にこのステージ名を返す
     /// </summary>
     /// <returns></returns>
 
-    private int DecideStage()
+    private string DecideStage()
     {
-        int stageNum = -1; // 初期値として無効な値を設定
+        string stageName = null; // 初期値として無効な値を設定
         RaycastHit hit;
         Ray ray = new Ray(stageSelectCamera.transform.position, stageSelectCamera.transform.forward);
         if(Physics.Raycast(ray, out hit, 100f)) // レイキャストでオブジェクトを検出
         {
             Debug.Log("ヒットしたオブジェクト: " + hit.collider.gameObject.name);
-            if (int.TryParse(hit.collider.gameObject.name, out stageNum)) // オブジェクトの名前を整数に変換
-            {
-                Debug.Log("ステージ番号: " + stageNum);
-            }
-            else
-            {
-                Debug.LogWarning("オブジェクトの名前が整数に変換できませんでした。");
-                stageNum = -1; // 無効な値を設定
-            }
+            stageName = hit.collider.gameObject.name; // ヒットしたオブジェクトの名前を取得
         }
         else
         {
             Debug.LogWarning("レイキャストでオブジェクトがヒットしませんでした。");
+            stageName = null; // デフォルトのステージ名を設定
         }
-        return stageNum;
+        return stageName;
     }
 
-    private void ChangeScene(int stageNum)
+    private void ChangeScene(string stageName)
     {
+        if (stageName == null)
+        {
+            Debug.LogWarning("StageSelect:ステージが選ばれていない");
+        }
         // シーンを変更する処理をここに実装
-        Debug.Log("シーンを変更: " + stageNum);
-        StageName.GetInstance().StageNameText = "Stage" + stageNum.ToString(); // ステージ名を設定
+        Debug.Log("シーンを変更: " + stageName);
+        StageName.GetInstance().StageNameText = stageName; // ステージ名を設定
         Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
     }
