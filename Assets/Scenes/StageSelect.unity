@@ -962,8 +962,9 @@ GameObject:
   - component: {fileID: 606394467}
   - component: {fileID: 606394466}
   - component: {fileID: 606394465}
+  - component: {fileID: 606394468}
   m_Layer: 0
-  m_Name: 2
+  m_Name: Stage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,6 +1056,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606394463}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &606394468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606394463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87700f5798a3a624690c28f216b98b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationObject: {fileID: 561397387}
 --- !u!1 &606488284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,8 +1118,9 @@ GameObject:
   - component: {fileID: 710773768}
   - component: {fileID: 710773767}
   - component: {fileID: 710773766}
+  - component: {fileID: 710773769}
   m_Layer: 0
-  m_Name: 1
+  m_Name: Stage1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,6 +1212,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710773764}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &710773769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710773764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87700f5798a3a624690c28f216b98b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationObject: {fileID: 7509777}
 --- !u!1 &711453366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,8 +3925,9 @@ GameObject:
   - component: {fileID: 2126655117}
   - component: {fileID: 2126655116}
   - component: {fileID: 2126655115}
+  - component: {fileID: 2126655118}
   m_Layer: 0
-  m_Name: 3
+  m_Name: Stage3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3990,6 +4019,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126655113}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2126655118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126655113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87700f5798a3a624690c28f216b98b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationObject: {fileID: 1355901638}
 --- !u!1 &2128077630
 GameObject:
   m_ObjectHideFlags: 0
