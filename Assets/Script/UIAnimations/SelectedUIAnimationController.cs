@@ -31,7 +31,7 @@ public class SelectedUIAnimationController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f)) // レイキャストでオブジェクトを検出
         {
-            Debug.Log("ヒットしたオブジェクト: " + hit.collider.gameObject.name);
+            //Debug.Log("ヒットしたオブジェクト: " + hit.collider.gameObject.name);
             hit.collider.gameObject.GetComponent<SelectedUIAnimation>()?.Show();
             for(int i = 0; i < stages.Length; i++)
             {

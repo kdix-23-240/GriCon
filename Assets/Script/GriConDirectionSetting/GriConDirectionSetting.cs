@@ -12,6 +12,7 @@ public class GriConDirectionSetting : MonoBehaviour
     private bool isSet4 = false;
     [SerializeField] private TimerPresenter timer;
     [SerializeField] private float selectTime = 2f;
+    [SerializeField] private GameObject gripAnimationObject; // グリップアニメーションのオブジェクト
 
     // 各方向のGriConDirectionBaseを格納
     [SerializeField] private GriConDirectionBase[] directionObjects = new GriConDirectionBase[4];
@@ -32,10 +33,12 @@ public class GriConDirectionSetting : MonoBehaviour
         if (CheckIsAllSet())
         {
             timer.StartTimer(selectTime);
+            gripAnimationObject.GetComponent<GripAnimation>().Show(); // グリップアニメーションを表示
         }
         else
         {
             timer.ResetTimer();
+            gripAnimationObject.GetComponent<GripAnimation>().Hide(); // グリップアニメーションを非表示
         }
     }
 

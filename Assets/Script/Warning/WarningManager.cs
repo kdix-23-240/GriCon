@@ -70,5 +70,4 @@ public class WarningManager : MonoBehaviour
             warningPresenter.WarningModel.WarningLevel.Value = 1;
         }
     }
-
 }
