@@ -7,13 +7,13 @@ public class GripAnimation : MonoBehaviour
         Hide(); // 初期状態では非表示
     }
 
-    private void Show()
+    public void Show()
     {
-
+        gameObject.SetActive(true); // オブジェクトを表示
     }
 
-    private void Hide()
+    public void Hide()
     {
-
+        gameObject.SetActive(false); // オブジェクトを非表示
     }
 }
