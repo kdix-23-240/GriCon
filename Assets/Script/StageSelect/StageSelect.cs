@@ -1,4 +1,3 @@
-using System.Drawing.Drawing2D;
 using UnityEngine;
 public class StageSelect : MonoBehaviour, ITimerCompletedAction
 {

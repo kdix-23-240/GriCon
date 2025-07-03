@@ -980,7 +980,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.42261827, w: 0.9063079}
   m_LocalPosition: {x: -2.787, y: 1.196, z: 0}
-  m_LocalScale: {x: 1.5, y: 0.5, z: 20}
+  m_LocalScale: {x: 3, y: 0.1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 954057826}
@@ -1135,8 +1135,8 @@ Transform:
   m_GameObject: {fileID: 710773764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.33, z: 0}
-  m_LocalScale: {x: 1.5, y: 0.5, z: 20}
+  m_LocalPosition: {x: -0.17, y: 2.41, z: 0}
+  m_LocalScale: {x: 3, y: 0.1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 954057826}
@@ -1376,8 +1376,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 710773765}
   - {fileID: 606394464}
+  - {fileID: 710773765}
   - {fileID: 2126655114}
   m_Father: {fileID: 1479100258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3375,6 +3375,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2047248478512766399, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1933470552}
+    - targetCorrespondingSourceObject: {fileID: 2047248478512766399, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1933470553}
   m_SourcePrefab: {fileID: 100100000, guid: db6d3d515cdbf4c4dbacc20ff046187a, type: 3}
 --- !u!4 &1933470548 stripped
 Transform:
@@ -3428,6 +3431,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerPresenter: {fileID: 1948707887}
   duration: 2
+--- !u!114 &1933470553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933470549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac9f3defb39bb34685ffceb8f98b99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerCamera: {fileID: 759875025}
+  stageParent: {fileID: 954057825}
 --- !u!1 &1948707885
 GameObject:
   m_ObjectHideFlags: 0
@@ -3943,7 +3960,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -0.42261827, w: 0.9063079}
   m_LocalPosition: {x: 2.476, y: 1.22, z: 0}
-  m_LocalScale: {x: 1.5, y: 0.5, z: 20}
+  m_LocalScale: {x: 3, y: 0.1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 954057826}
