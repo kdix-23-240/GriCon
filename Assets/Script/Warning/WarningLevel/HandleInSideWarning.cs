@@ -15,7 +15,7 @@ public class HandleInSideWarning : MonoBehaviour
         {
             return;
         }
-        Debug.Log("[InSide] Enter");
+        //Debug.Log("[InSide] Enter");
         // 衝突したオブジェクトの名前をログに表示
         if (other.gameObject.tag == "Stick")
         {
@@ -29,7 +29,7 @@ public class HandleInSideWarning : MonoBehaviour
         {
             return;
         }
-        Debug.Log("[InSide1] Exit");
+        //Debug.Log("[InSide1] Exit");
         // 衝突したオブジェクトの名前をログに表示
         if (other.gameObject.tag == "Stick")
         {

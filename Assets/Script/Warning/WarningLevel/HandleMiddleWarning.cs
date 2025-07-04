@@ -15,7 +15,7 @@ public class HandleMiddleWarning : MonoBehaviour
         {
             return;
         }
-        Debug.Log("[MiddleSide] Enter");
+        //Debug.Log("[MiddleSide] Enter");
         // 衝突したオブジェクトの名前をログに表示
         if (other.gameObject.tag == "Stick")
         {
@@ -29,7 +29,7 @@ public class HandleMiddleWarning : MonoBehaviour
         {
             return;
         }
-        Debug.Log("[MiddleSide] Exit");
+        //Debug.Log("[MiddleSide] Exit");
         // 衝突したオブジェクトの名前をログに表示
         if (other.gameObject.tag == "Stick")
         {

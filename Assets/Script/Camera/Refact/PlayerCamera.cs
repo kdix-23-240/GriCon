@@ -19,10 +19,12 @@ public class PlayerCamera : MonoBehaviour
         playerPos = player.transform.position;
         pos = new Vector3(playerPos.x + offsetX, playerPos.y + offsetY, playerPos.z + offsetZ);
     }
+
     private void Update()
     {
         ChasePlayer();
     }
+
     private void ChasePlayer()
     {
         if (player == null) return;

@@ -16,6 +16,7 @@ public class GriConDirectionCompleted : MonoBehaviour, ITimerCompletedAction
 		selectSE.PlaySelectSE();
 		await System.Threading.Tasks.Task.Delay(1000); // 1秒待機
         Debug.Log("全方向の設定が完了しました。シーンを変更します。");
+		Debug.Log("StageName: " + StageName.GetInstance().StageNameText);
         UnityEngine.SceneManagement.SceneManager.LoadScene(StageName.GetInstance().StageNameText);
     }
 }

@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
         if (other.gameObject.CompareTag("Stick"))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");

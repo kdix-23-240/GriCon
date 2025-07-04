@@ -36,9 +36,12 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
 
     private void ChangeScene(string stageName)
     {
-        if (stageName == null)
+        if (string.IsNullOrEmpty(stageName))
         {
-            Debug.LogWarning("StageSelect:ステージが選ばれていない");
+            Debug.LogWarning("StageSelect:空文字です。強制的にリトライします");
+            Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
+            return;
         }
 
         if (stageName == "Retry")
