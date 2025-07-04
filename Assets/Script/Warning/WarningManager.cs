@@ -70,4 +70,12 @@ public class WarningManager : MonoBehaviour
             warningPresenter.WarningModel.WarningLevel.Value = 1;
         }
     }
+
+    public void ObserveGameClear(bool isHit)
+    {
+        if (isHit)
+        {
+            warningPresenter.WarningModel.WarningLevel.Value = 5;
+        }
+    }
 }

@@ -35,8 +35,8 @@ public class PauseButton : MonoBehaviour
     /// </summary>
     private void Pause()
     {
-        GameSystem.Instance.SetCanRotate(false);
-        GameSystem.Instance.SetCanMove(false);
+        //GameSystem.Instance.SetCanRotate(false);
+        //GameSystem.Instance.SetCanMove(false);
         var _dialog = Instantiate(biribiriModal);
         _dialog.transform.SetParent(parent.transform, false);
 

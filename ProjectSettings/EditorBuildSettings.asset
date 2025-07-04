@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GriConSetting.unity
     guid: 7a86a15656094f243a07591b9ea6d2db
+  - enabled: 1
+    path: Assets/Scenes/GameClear.unity
+    guid: 2a12ca8a9acb40f4283c54e3abf94445
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: e0ea6dc9dbc8c014cb340562eba36751
   m_configObjects: {}

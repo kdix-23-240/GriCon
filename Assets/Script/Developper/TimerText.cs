@@ -11,7 +11,7 @@ public class TimerText : MonoBehaviour
 {
     void Start()
     {
-        Debug.Log("GameSystem.clearTime: " + GameSystem.clearTime);
-        gameObject.GetComponent<Text>().text = GameSystem.clearTime.ToString("F2") + "s";
+        //Debug.Log("GameSystem.clearTime: " + GameSystem.clearTime);
+        //gameObject.GetComponent<Text>().text = GameSystem.clearTime.ToString("F2") + "s";
     }
 }

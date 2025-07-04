@@ -54,10 +54,10 @@ public class ReStartButton : MonoBehaviour
     private void ReStart()
     {
         // 移動・回転フラグを有効化、タイマーとリセットフラグも初期化
-        GameSystem.Instance.SetCanRotate(true);
-        GameSystem.Instance.SetCanMove(true);
-        GameSystem.isReset = true;
-        GameSystem.clearTime = 0;
+        //GameSystem.Instance.SetCanRotate(true);
+        //GameSystem.Instance.SetCanMove(true);
+        //GameSystem.isReset = true;
+        //GameSystem.clearTime = 0;
 
         // 親Canvas上のダイアログUIを閉じる（ボタンの親の親）
         Destroy(transform.parent.parent.gameObject);

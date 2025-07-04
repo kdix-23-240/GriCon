@@ -19,8 +19,8 @@ public class HandleCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Stick") || collision.gameObject.CompareTag("Goal"))
         {
             // プレイヤーの回転と移動を禁止
-            GameSystem.Instance.SetCanRotate(false);
-            GameSystem.Instance.SetCanMove(false);
+            //GameSystem.Instance.SetCanRotate(false);
+            //GameSystem.Instance.SetCanMove(false);
 
             // 回転スクリプトを無効化
             var playerObj = transform.root;

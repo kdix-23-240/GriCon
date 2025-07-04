@@ -16,6 +16,7 @@ public class GripTimer : MonoBehaviour, IGripAction
 
     public void OnGrip(float bend)
     {
+        if (!GameSystem.canGrip) return; // グリップ可能かチェック
         timerPresenter.StartTimer(duration); // 時間計測開始
         gripAnimationObject.GetComponent<GripAnimation>().Show(); // グリップアニメーションを表示
     }
