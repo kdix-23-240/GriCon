@@ -68,6 +68,13 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
             }
         }
 
+        if(stageName == "StageSelect")
+        {
+            Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(stageName);
+            return; // "Stage4"の場合はステージ名を変更しない
+        }
+
         // シーンを変更する処理をここに実装
         Debug.Log("シーンを変更: " + stageName);
         StageName.GetInstance().StageNameText = stageName; // ステージ名を設定
