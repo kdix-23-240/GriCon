@@ -39,11 +39,35 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
         {
             Debug.LogWarning("StageSelect:ステージが選ばれていない");
         }
-        if (StageName.GetInstance().StageNameText == "Retry")
+
+        if (stageName == "Retry")
         {
             Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
             return; // "Retry"の場合はステージ名を変更しない
         }
+
+        if (stageName == "NextStage")
+        {
+            Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
+            
+            switch (StageName.GetInstance().StageNameText)
+            {
+                case "Stage1":
+                    stageName = "Stage2"; // Stage1からNextStageを選択した場合はStage2に変更
+                    break;
+                case "Stage2":
+                    stageName = "Stage3"; // Stage2からNextStageを選択した場合はStage3に変更
+                    break;
+                case "Stage3":
+                    stageName = "Stage1"; // Stage3からNextStageを選択した場合はStage4に変更
+                    break;
+                default:
+                    Debug.LogWarning("次のステージが設定されていません。");
+                    break;
+            }
+        }
+
         // シーンを変更する処理をここに実装
         Debug.Log("シーンを変更: " + stageName);
         StageName.GetInstance().StageNameText = stageName; // ステージ名を設定
