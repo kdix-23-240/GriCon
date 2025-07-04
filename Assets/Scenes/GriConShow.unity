@@ -622,6 +622,7 @@ GameObject:
   - component: {fileID: 1340924745}
   - component: {fileID: 1340924744}
   - component: {fileID: 1340924743}
+  - component: {fileID: 1340924746}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -703,6 +704,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1340924746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340924742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60f1a5ed153a8b469589dd4150809d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+--- !u!1 &1390974680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3037710306658690269, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
+  m_PrefabInstance: {fileID: 1801754203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1801754203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -739,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 86b05bb0ede4f0b40a095a979474f870, type: 2}
+    - target: {fileID: 4344402354504382520, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 86b05bb0ede4f0b40a095a979474f870, type: 2}
     - target: {fileID: 5564437978111012045, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -773,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7952105279159381456, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -19.1
       objectReference: {fileID: 0}
     - target: {fileID: 7952105279159381456, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -841,6 +864,7 @@ MonoBehaviour:
   - {fileID: 1801754208}
   - {fileID: 1801754207}
   - {fileID: 1801754206}
+  - {fileID: 1390974680}
   maxBend: 10
 --- !u!1 &1801754206 stripped
 GameObject:
