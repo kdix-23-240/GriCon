@@ -2,10 +2,11 @@ using UnityEngine;
 public class StageSelect : MonoBehaviour, ITimerCompletedAction
 {
     [SerializeField] private Camera stageSelectCamera;
+    [SerializeField] private SelectSE selectSE; // SEを再生するためのコンポーネント
 
     public void OnTimerCompleted()
     {
-        ChangeScene(DecideStage()); // タイマー完了時にステージを決定し、シーンを変更
+        ChangeSceneWithSE(); // タイマー完了時にSEを再生
     }
 
     /// <summary>
@@ -35,9 +36,12 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
 
     private void ChangeScene(string stageName)
     {
-        if (stageName == null)
+        if (string.IsNullOrEmpty(stageName))
         {
-            Debug.LogWarning("StageSelect:ステージが選ばれていない");
+            Debug.LogWarning("StageSelect:空文字です。強制的にリトライします");
+            Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
+            return;
         }
 
         if (stageName == "Retry")
@@ -80,5 +84,12 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
         StageName.GetInstance().StageNameText = stageName; // ステージ名を設定
         Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
         UnityEngine.SceneManagement.SceneManager.LoadScene("GriConSetting");
+    }
+
+    private async void ChangeSceneWithSE()
+    {
+        selectSE.PlaySelectSE(); // SEを再生
+        await System.Threading.Tasks.Task.Delay(1000); // 1秒待機（SEの再生時間に合わせる
+        ChangeScene(DecideStage()); // タイマー完了時にステージを決定し、シーンを変更
     }
 }

@@ -51,7 +51,7 @@ public class HitPresenter : MonoBehaviour
         outSideWarning.IsHit
             .Subscribe(isHit => 
             {
-                Debug.Log($"ŠO‘¤‚ÌŒx: {isHit}");
+                //Debug.Log($"ŠO‘¤‚ÌŒx: {isHit}");
                 warningManager.ObserveWarningLevel1(isHit);
             })
             .AddTo(this);
@@ -59,7 +59,7 @@ public class HitPresenter : MonoBehaviour
         middleWarning.IsHit
             .Subscribe(isHit => 
             {
-                Debug.Log($"’†ŠÔ‚ÌŒx: {isHit}");
+                //Debug.Log($"’†ŠÔ‚ÌŒx: {isHit}");
                 warningManager.ObserveWarningLevel2(isHit);
             })
             .AddTo(this);
@@ -67,7 +67,7 @@ public class HitPresenter : MonoBehaviour
         inSideWarning.IsHit
             .Subscribe(isHit => 
             {
-                Debug.Log($"“à‘¤‚ÌŒx: {isHit}");
+                //Debug.Log($"“à‘¤‚ÌŒx: {isHit}");
                 warningManager.ObserveWarningLevel3(isHit);
             })
             .AddTo(this);
@@ -75,14 +75,14 @@ public class HitPresenter : MonoBehaviour
         playerCollision.IsHit
             .Subscribe(isHit => 
             {
-                Debug.Log($"’v–½“I‚ÈÕ“Ë: {isHit}");
+                //Debug.Log($"’v–½“I‚ÈÕ“Ë: {isHit}");
                 warningManager.ObserveWarningLevel4(isHit);
             })
             .AddTo(this);
         gameClear.IsHit
             .Subscribe(isHit => 
             {
-                Debug.Log($"ƒQ[ƒ€ƒNƒŠƒA: {isHit}");
+                //Debug.Log($"ƒQ[ƒ€ƒNƒŠƒA: {isHit}");
                 warningManager.ObserveGameClear(isHit);
             })
             .AddTo(this);

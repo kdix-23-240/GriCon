@@ -14,7 +14,7 @@ public class TimerPresenter : MonoBehaviour
         model = new TimerModel();
         view = GetComponent<TimerView>();
         timerCompletedAction = GetComponent<ITimerCompletedAction>();
-        Debug.Log(GetComponent<ITimerCompletedAction>());
+        //Debug.Log(GetComponent<ITimerCompletedAction>());
     }
 
     void Start()

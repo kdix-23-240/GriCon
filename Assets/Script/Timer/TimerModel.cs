@@ -30,7 +30,7 @@ public class TimerModel
             yield return null;
         }
 
-        Debug.Log("Timer completed.");
+        //Debug.Log("Timer completed.");
         IsCompleted.Value = true; // タイマー完了を通知
     }
 
