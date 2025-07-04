@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: 384945447}
   - component: {fileID: 384945446}
   - component: {fileID: 384945445}
-  - component: {fileID: 384945444}
+  - component: {fileID: 384945448}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -775,18 +775,6 @@ RectTransform:
   m_AnchoredPosition: {x: -216.9, y: 2.7}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &384945444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384945442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb5f0cbe0c843145b0a8874119206fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &384945445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,8 +819,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 384945444}
-        m_TargetAssemblyTypeName: GoToSecret, Assembly-CSharp
+      - m_Target: {fileID: 384945448}
+        m_TargetAssemblyTypeName: GoToSecreTitle, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -881,6 +869,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384945442}
   m_CullTransparentMesh: 1
+--- !u!114 &384945448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384945442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8829fffcfa85b6e458b73fb92058e49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &477241479
 GameObject:
   m_ObjectHideFlags: 0
