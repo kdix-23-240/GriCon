@@ -20,20 +20,6 @@ public class SelectBasePresenter : MonoBehaviour
     /// </summary>
     private void Bind()
     {
-        //ControllerDataModel.GetInstance.RotateX
-        //.Subscribe(rotate =>
-        //{
-        //    rotateView.RotateX(rotate);
-        //})
-        //.AddTo(this);
-
-        //ControllerDataModel.GetInstance.RotateY
-        //.Subscribe(rotate =>
-        //{
-        //    rotateView.RotateY(rotate);
-        //})
-        //.AddTo(this);
-
         ControllerDataModel.GetInstance.RotateZ
         .Subscribe(rotate =>
         {
