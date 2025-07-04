@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: 607f247db04104fa2af262e899c37fe3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleStage.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
@@ -16,13 +16,13 @@ EditorBuildSettings:
     guid: 9ff27159b88604ae0a378d41a6db01ba
   - enabled: 1
     path: Assets/Scenes/SampleStage2.unity
-    guid: c61c89a4fad3047f29c9367017324d94
+    guid: 1758786115b354d57b6477858a1ef55b
   - enabled: 1
     path: Assets/Scenes/Stage1.unity
-    guid: 91c165dd72fb241f28fcd954971744dc
+    guid: 111fdd44236aec64aa430ccc8561047d
   - enabled: 1
     path: Assets/Scenes/Stage2.unity
-    guid: a3fb6543dbc7648e98aa44c3bb1027be
+    guid: a43dc860a43b7fc4aaa54d11e3b6adf2
   - enabled: 1
     path: Assets/Scenes/Stage3.unity
     guid: e43783f4b1942c94ea705c7cb8e27626
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: e0ea6dc9dbc8c014cb340562eba36751
+  - enabled: 1
+    path: Assets/Scenes/GriConShow.unity
+    guid: 1f26470553e375b4a8401e4f87158f62
   m_configObjects: {}
