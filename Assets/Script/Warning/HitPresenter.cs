@@ -8,7 +8,7 @@ public class HitPresenter : MonoBehaviour
     private HandleMiddleWarning middleWarning;
     private HandleInSideWarning inSideWarning;
     private PlayerCollision playerCollision;
-    [SerializeField] private GameClear gameClear;
+    [SerializeField] private GameClearObj gameClear;
     private WarningManager warningManager;
 
     private void Awake()

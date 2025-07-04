@@ -1,7 +1,7 @@
 using UniRx;
 using UnityEngine;
 
-public class GameClear : MonoBehaviour
+public class GameClearObj : MonoBehaviour
 {
     private readonly ReactiveProperty<bool> isHit = new ReactiveProperty<bool>(false);
     public ReactiveProperty<bool> IsHit
