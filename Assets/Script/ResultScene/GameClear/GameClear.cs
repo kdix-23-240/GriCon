@@ -1,20 +1,24 @@
+using UniRx;
 using UnityEngine;
 
 public class GameClear : MonoBehaviour
 {
-    private WarningPresenter warningPresenter;
+    private readonly ReactiveProperty<bool> isHit = new ReactiveProperty<bool>(false);
+    public ReactiveProperty<bool> IsHit
+    {
+        get { return isHit; }
+    }
 
     private void Awake()
     {
-        warningPresenter = new WarningPresenter();
+
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "PlayerCollision")
         {
             Debug.Log("Game Clear!"); // ゲームクリアのメッセージをログに表示
-            // 警告レベル1が解除された場合、レベルを0に戻す
-            warningPresenter.WarningModel.WarningLevel.Value = 5;
+            isHit.Value = true; // ゲームクリアの状態を更新
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameClear");
         }
     }

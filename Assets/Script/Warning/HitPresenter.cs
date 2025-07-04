@@ -8,6 +8,7 @@ public class HitPresenter : MonoBehaviour
     private HandleMiddleWarning middleWarning;
     private HandleInSideWarning inSideWarning;
     private PlayerCollision playerCollision;
+    [SerializeField] private GameClear gameClear;
     private WarningManager warningManager;
 
     private void Awake()
@@ -76,6 +77,13 @@ public class HitPresenter : MonoBehaviour
             {
                 Debug.Log($"致命的な衝突: {isHit}");
                 warningManager.ObserveWarningLevel4(isHit);
+            })
+            .AddTo(this);
+        gameClear.IsHit
+            .Subscribe(isHit => 
+            {
+                Debug.Log($"ゲームクリア: {isHit}");
+                warningManager.ObserveGameClear(isHit);
             })
             .AddTo(this);
     }
