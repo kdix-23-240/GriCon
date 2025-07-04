@@ -39,6 +39,11 @@ public class StageSelect : MonoBehaviour, ITimerCompletedAction
         {
             Debug.LogWarning("StageSelect:ステージが選ばれていない");
         }
+        if (StageName.GetInstance().StageNameText == "Retry")
+        {
+            Debug.Log("選択されたステージ名: " + StageName.GetInstance().StageNameText);
+            return; // "Retry"の場合はステージ名を変更しない
+        }
         // シーンを変更する処理をここに実装
         Debug.Log("シーンを変更: " + stageName);
         StageName.GetInstance().StageNameText = stageName; // ステージ名を設定

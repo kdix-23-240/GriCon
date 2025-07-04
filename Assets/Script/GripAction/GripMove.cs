@@ -10,6 +10,7 @@ public class GripMove : MonoBehaviour, IGripAction
 
     public void OnGrip(float bend)
     {
+        if (!GameSystem.canMove) return; // 移動可能かチェック
         Move(bend);
     }
 
@@ -34,6 +35,5 @@ public class GripMove : MonoBehaviour, IGripAction
     {
         transform.position = new Vector3(firstPlayerPositionX, firstPlayerPositionY, firstPlayerPositionZ); // 初期位置に戻す
         transform.rotation = Quaternion.Euler(0, 0, 0); // 回転も初期化
-        GameSystem.isReset = false; // リセットフラグを解除
     }
 }

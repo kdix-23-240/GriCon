@@ -13,11 +13,11 @@ public class MiniMapRotateY : MonoBehaviour
 
     void Update()
     {
-        if (GameSystem.Instance.GetCanRotate())
-        {
-            RotateHandle();
-        }
-        GazeStage();
+        //if (GameSystem.Instance.GetCanRotate())
+        //{
+        //    RotateHandle();
+        //}
+        //GazeStage();
     }
 
     /// <summary>

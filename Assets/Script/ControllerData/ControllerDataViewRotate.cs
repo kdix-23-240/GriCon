@@ -40,6 +40,7 @@ public class ControllerDataViewRotate : MonoBehaviour
     private void ApplyRotation()
     {
         // X:ピッチ, Y:ヨー, Z:ロール
+        if (!GameSystem.canRotate) return;
         transform.localRotation = Quaternion.Euler(currentX, currentY, currentZ);
     }
 }
