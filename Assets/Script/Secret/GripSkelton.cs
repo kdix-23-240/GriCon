@@ -6,23 +6,23 @@ public class GripSkelton : MonoBehaviour, IGripAction
     [SerializeField] private float maxBend = 15f; // Maximum bend value for the grip
 
     /// <summary>
-    /// bend‚ÌŠ„‡‚ğæ“¾
-    /// ‚»‚ÌŠ„‡‚É‰‚¶‚ÄŠeƒp[ƒc‚ğ“§–¾‰»‚·‚é
+    /// bendï¿½ÌŠï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾
+    /// ï¿½ï¿½ï¿½ÌŠï¿½ï¿½ï¿½ï¿½É‰ï¿½ï¿½ï¿½ï¿½ÄŠeï¿½pï¿½[ï¿½cï¿½ğ“§–ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     /// <param name="bend"></param>
 
     public void OnGrip(float bend)
     {
         float bendRatio = 0;
-        if (bend < 4f)
+        if (bend < 3f)
         {
             bendRatio = 0f;
         }
-        else if (4f < bend && bend < 10f)
+        else if (3f < bend && bend < 7f)
         {
-            bendRatio = (bend - 4f) / (10f - 4f);
+            bendRatio = (bend - 3f) / (7f - 3f);
         }
-        else if (bend >= 10f)
+        else if (bend >= 7f)
         {
             bendRatio = 1f;
         }
@@ -30,7 +30,7 @@ public class GripSkelton : MonoBehaviour, IGripAction
 
         for (int i = 0; i < parts.Length; i++)
         {
-            float alpha = 1f - bendRatio; // ‚·‚×‚Ä‚Ìƒp[ƒc‚ª“¯‚¶Š„‡‚Å“§–¾‰»
+            float alpha = 1f - bendRatio; // ï¿½ï¿½ï¿½×‚Ä‚Ìƒpï¿½[ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å“ï¿½ï¿½ï¿½ï¿½ï¿½
             MeshRenderer meshRenderer = parts[i].GetComponent<MeshRenderer>();
             if (meshRenderer != null)
             {

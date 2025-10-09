@@ -485,6 +485,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6579764492935691141, guid: fdc5a0f1c8edf2f4fb5bee0b1dde6fff, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 88ea46dec266260428c259ff7f2570fd, type: 3}
     - target: {fileID: 8818549872043863202, guid: fdc5a0f1c8edf2f4fb5bee0b1dde6fff, type: 3}
       propertyPath: m_Name
       value: BGM
@@ -780,8 +784,8 @@ Camera:
   m_GameObject: {fileID: 1340924742}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 0.7372549, b: 0.18039216, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -907,6 +911,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 86b05bb0ede4f0b40a095a979474f870, type: 2}
+    - target: {fileID: 6141282375602365837, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
+      propertyPath: bendWall
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7246480432970978643, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -998,7 +1006,7 @@ MonoBehaviour:
   - {fileID: 1801754207}
   - {fileID: 1801754206}
   - {fileID: 1390974680}
-  maxBend: 10
+  maxBend: 6
 --- !u!1 &1801754206 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5207230892676372375, guid: cbb9b8a119aee6f4bb89a1ede0395a5b, type: 3}

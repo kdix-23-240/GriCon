@@ -5,7 +5,7 @@ public class ControllerDataPresenter : MonoBehaviour
 {
     private ControllerDataViewRotate rotateView;
     [SerializeField] private float bendWall = 4f;
-    private IGripAction gripAction; // ƒRƒ“ƒgƒ[ƒ‰[‚ğˆ¬‚Á‚½‚Æ‚«‚Ì“®ì‚ğ•Û
+    private IGripAction gripAction; // ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ì“ï¿½ï¿½ï¿½ï¿½Ûï¿½
 
     void Awake()
     {
@@ -16,14 +16,14 @@ public class ControllerDataPresenter : MonoBehaviour
     {
         if(gripAction == null)
         {
-            Debug.LogError("ControllerDataPresenter:GripAction‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            Debug.LogError("ControllerDataPresenter:GripActionï¿½ï¿½ï¿½Aï¿½^ï¿½bï¿½`ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½");
         }
         Bind();
     }
 
     /// <summary>
-    /// ƒRƒ“ƒgƒ[ƒ‰[‚ªŒX‚¢‚½‚ç‚»‚ê‚ğ•`‰æ‚·‚é
-    /// ˆ¬‚ç‚ê‚½‚çGripAction‚ğŒÄ‚Ño‚·
+    /// ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½ç‚»ï¿½ï¿½ï¿½`ï¿½æ‚·ï¿½ï¿½
+    /// ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½GripActionï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½
     /// </summary>
     private void Bind()
     {
@@ -53,7 +53,7 @@ public class ControllerDataPresenter : MonoBehaviour
         {
             if(bendWall < bend)
             {
-                gripAction.OnGrip(bend);
+                gripAction.OnGrip(bend - bendWall);
             }
             else
             {

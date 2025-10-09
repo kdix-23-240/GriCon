@@ -6,7 +6,7 @@ public class WarningSender : MonoBehaviour
 {
     private Coroutine warningCoroutine;
     private bool isWarningSequenceRunning = false;
-    private float bilibiliTime = 2f; // ŒxŠÔ‚Ì‘Ò‹@ŠÔi•bj
+    private float bilibiliTime = 2f; // ï¿½xï¿½ï¿½ï¿½Ô‚Ì‘Ò‹@ï¿½ï¿½ï¿½Ôiï¿½bï¿½j
 
     public void OnChangeWarningLevel(int level)
     {
@@ -32,7 +32,7 @@ public class WarningSender : MonoBehaviour
         }
     }
     /// <summary>
-    /// Õ“Ë‚È‚Ç‚ÉŒÄ‚Ño‚µAŒx4¨5‚ğ’iŠK“I‚É‘—M‚·‚é
+    /// ï¿½Õ“Ëï¿½ï¿½È‚Ç‚ÉŒÄ‚Ñoï¿½ï¿½ï¿½Aï¿½xï¿½ï¿½4ï¿½ï¿½5ï¿½ï¿½iï¿½Kï¿½Iï¿½É‘ï¿½ï¿½Mï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void StartWarningSequence()
     {

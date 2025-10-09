@@ -1,19 +1,19 @@
 using UnityEngine;
 
 /// <summary>
-/// ƒfƒoƒbƒO—p‚ÌƒNƒ‰ƒX
-/// ƒRƒ“ƒgƒ[ƒ‰[‚ÌŠp“x‚ğ‰Â‹‰»‚·‚é‚½‚ß‚ÉÔ‚¢ü‚ğ•`‰æ
+/// ï¿½fï¿½oï¿½bï¿½Oï¿½pï¿½ÌƒNï¿½ï¿½ï¿½X
+/// ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ÌŠpï¿½xï¿½ï¿½ï¿½Âï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚ÉÔ‚ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½
 /// </summary>
 public class CameraLay : MonoBehaviour
 {
-    void Update()
-    {
-        // 6•ûŒü‚ÉŒü‚¯‚ÄÔ‚¢ü‚ğ•`‰æ
-        Debug.DrawRay(transform.position, transform.forward * 50f, Color.red);
-        Debug.DrawRay(transform.position, -transform.forward * 50f, Color.red);
-        Debug.DrawRay(transform.position, transform.right * 50f, Color.red);
-        Debug.DrawRay(transform.position, -transform.right * 50f, Color.red);
-        Debug.DrawRay(transform.position, transform.up * 50f, Color.red);
-        Debug.DrawRay(transform.position, -transform.up * 50f, Color.red);
-    }
+    // void Update()
+    // {
+    //     // 6ï¿½ï¿½ï¿½ï¿½ï¿½ÉŒï¿½ï¿½ï¿½ï¿½ÄÔ‚ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½
+    //     Debug.DrawRay(transform.position, transform.forward * 50f, Color.red);
+    //     Debug.DrawRay(transform.position, -transform.forward * 50f, Color.red);
+    //     Debug.DrawRay(transform.position, transform.right * 50f, Color.red);
+    //     Debug.DrawRay(transform.position, -transform.right * 50f, Color.red);
+    //     Debug.DrawRay(transform.position, transform.up * 50f, Color.red);
+    //     Debug.DrawRay(transform.position, -transform.up * 50f, Color.red);
+    // }
 }

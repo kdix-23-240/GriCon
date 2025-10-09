@@ -2422,6 +2422,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8889022676275008797}
     - target: {fileID: 8301385111668285354, guid: 30db3c1d04f34bd4791c05f499df31c9, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301385111668285354, guid: 30db3c1d04f34bd4791c05f499df31c9, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301385111668285354, guid: 30db3c1d04f34bd4791c05f499df31c9, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301385111668285354, guid: 30db3c1d04f34bd4791c05f499df31c9, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301385111668285354, guid: 30db3c1d04f34bd4791c05f499df31c9, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
@@ -2491,6 +2507,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.036
       objectReference: {fileID: 0}
+    - target: {fileID: 7414420736305432517, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414420736305432517, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414420736305432517, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414420736305432517, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6723419334646029880, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
     - {fileID: 4169989085707877526, guid: 9af0c2d2eb0dd4b45a6bcfaf9a527a5d, type: 3}
@@ -2533,7 +2565,8 @@ MonoBehaviour:
   firstPlayerPositionX: 0
   firstPlayerPositionY: 0
   firstPlayerPositionZ: 0
-  speedRate: 0.0005
+  speedRate: 0.0003
+  firstRate: 0.0004
 --- !u!114 &8889022676275008800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2561,7 +2594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e195336d4751b164eb930766e1f84d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bendWall: 4
+  bendWall: 7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

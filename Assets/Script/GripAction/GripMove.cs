@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class GripMove : MonoBehaviour, IGripAction
 {
-    [SerializeField] private GameObject circleHandle;         // is•ûŒü‚ÌŠî€‚Æ‚È‚éƒnƒ“ƒhƒ‹ƒIƒuƒWƒFƒNƒg
-    [SerializeField] private float firstPlayerPositionX;      // ‰ŠúˆÊ’uX
-    [SerializeField] private float firstPlayerPositionY;      // ‰ŠúˆÊ’uY
-    [SerializeField] private float firstPlayerPositionZ;      // ‰ŠúˆÊ’uZ
-    [SerializeField] private float speedRate = 1;             // ‘¬“x’²ß‚Ì‚½‚ß‚Ì’è”
+    [SerializeField] private GameObject circleHandle;         // ï¿½iï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ÌŠî€ï¿½Æ‚È‚ï¿½nï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½g
+    [SerializeField] private float firstPlayerPositionX;      // ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uX
+    [SerializeField] private float firstPlayerPositionY;      // ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uY
+    [SerializeField] private float firstPlayerPositionZ;      // ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uZ
+    [SerializeField] private float speedRate = 1;             // ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ß‚Ì‚ï¿½ï¿½ß‚Ì’è”
+    [SerializeField] private float firstRate = 1;             // ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ß‚Ì‚ï¿½ï¿½ß‚Ì’è”
 
     public void OnGrip(float bend)
     {
-        if (!GameSystem.canMove) return; // ˆÚ“®‰Â”\‚©ƒ`ƒFƒbƒN
+        if (!GameSystem.canMove) return; // ï¿½Ú“ï¿½ï¿½Â”\ï¿½ï¿½ï¿½`ï¿½Fï¿½bï¿½N
         Move(bend);
     }
 
@@ -20,20 +21,20 @@ public class GripMove : MonoBehaviour, IGripAction
     }
 
     /// <summary>
-    /// ƒnƒ“ƒhƒ‹‚ÌŒü‚«i‰º•ûŒüj‚É‘Î‚µ‚ÄƒvƒŒƒCƒ„[‚ğˆÚ“®‚³‚¹‚é
+    /// ï¿½nï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ÌŒï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½jï¿½É‘Î‚ï¿½ï¿½Äƒvï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void Move(float moveSpeed)
     {
-        Vector3 moveDirection = -circleHandle.transform.up; // ƒnƒ“ƒhƒ‹‚Ì‰ºŒü‚«‚ğˆÚ“®•ûŒü‚Éİ’è
-        transform.Translate(moveDirection.normalized * moveSpeed * speedRate, Space.World);
+        Vector3 moveDirection = -circleHandle.transform.up; // ï¿½nï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éİ’ï¿½
+        transform.Translate((moveDirection.normalized * moveSpeed * moveSpeed * speedRate) + (moveDirection.normalized * firstRate), Space.World);
     }
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚ÆŠp“x‚ğ‰Šúó‘Ô‚ÉƒŠƒZƒbƒg‚·‚é
+    /// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌˆÊ’uï¿½ÆŠpï¿½xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚Éƒï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public void ResetPlayerPosition()
     {
-        transform.position = new Vector3(firstPlayerPositionX, firstPlayerPositionY, firstPlayerPositionZ); // ‰ŠúˆÊ’u‚É–ß‚·
-        transform.rotation = Quaternion.Euler(0, 0, 0); // ‰ñ“]‚à‰Šú‰»
+        transform.position = new Vector3(firstPlayerPositionX, firstPlayerPositionY, firstPlayerPositionZ); // ï¿½ï¿½ï¿½ï¿½ï¿½Ê’uï¿½É–ß‚ï¿½
+        transform.rotation = Quaternion.Euler(0, 0, 0); // ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 }

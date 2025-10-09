@@ -1,20 +1,43 @@
 // Unity用ヘッダー同期付き・整数角度対応シリアル受信スクリプト
+// 改良点 (2025-10-09):
+//  - ポート名/ボーレートを Inspector から設定可能に
+//  - タイムアウト時のログをレート制限（スパム防止）
+//  - 再接続ロジック（接続喪失時に一定間隔で再試行）
+//  - 読み取りタイムアウト短縮＋ヘッダー同期を非ブロッキング化
+//  - Dispose 安全性とアプリ終了時の明示的クリーンアップ
 using UnityEngine;
 using System;
 using System.IO.Ports;
 using System.Threading;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Get_Information : MonoBehaviour
 {
     public static Get_Information Instance { get; private set; } // Singletonインスタンス
 
     [Header("Serial Port Settings")]
-    private string portName = "COM4";  // 使用するシリアルポート名（※元はpublicだが、外部設定不要なのでprivateに）
-    private int baudRate = 9600;       // 通信速度（ボーレート）
+    [Tooltip("使用するシリアルポート (例: COM3)。空の場合は最初に見つかったポートを自動選択。")]
+    [SerializeField] private string portName = "COM9";
+    [Tooltip("通信速度 (ボーレート)")]
+    [SerializeField] private int baudRate = 115200;
+    [Tooltip("ReadTimeout (ms)。短くしてループに戻り再接続や終了判定を素早くする。")]
+    [SerializeField] private int readTimeoutMs = 200;
+    [Tooltip("WriteTimeout (ms)")]
+    [SerializeField] private int writeTimeoutMs = 500;
+    [Tooltip("タイムアウトや再接続などの警告を出す最小間隔 (秒)")]
+    [SerializeField] private float warnLogInterval = 5f;
+    [Tooltip("シリアル切断検出後の再接続試行間隔 (秒)")]
+    [SerializeField] private float reconnectInterval = 3f;
 
     private SerialPort serial;        // シリアルポートインスタンス
-    private Thread readThread;       // データ受信用スレッド
+    private Thread readThread;        // データ受信用スレッド
     private volatile bool isRunning = false;  // 受信スレッドの制御フラグ
+    private volatile bool requestReconnect = false;
+    private DateTime lastWarnLogTime = DateTime.MinValue;
+    private DateTime lastReconnectAttempt = DateTime.MinValue;
 
     public float[] receivedData = new float[4]; // 受信データ：pitch, roll, yaw, bend
 
@@ -38,36 +61,95 @@ public class Get_Information : MonoBehaviour
     // Startはゲーム開始時に一度だけ呼び出される初期化処理
     void Start()
     {
-        // シリアルポート初期化
-        serial = new SerialPort(portName, baudRate);
-        serial.ReadTimeout = 1000;
-        serial.WriteTimeout = 1000;
-        serial.DtrEnable = true;
+        OpenPort();
+    }
+
+    private void OpenPort()
+    {
+        if (serial != null && serial.IsOpen) return;
+
+        // ポート自動選択
+        if (string.IsNullOrWhiteSpace(portName))
+        {
+            string[] ports = SerialPort.GetPortNames();
+            if (ports.Length > 0)
+            {
+                portName = ports[0];
+                Debug.Log("[Serial] Auto-selected port: " + portName);
+            }
+            else
+            {
+                RateLimitedWarn("[Serial] 利用可能なシリアルポートが見つかりません");
+                ScheduleReconnect();
+                return;
+            }
+        }
+
+        serial = new SerialPort(portName, baudRate)
+        {
+            ReadTimeout = readTimeoutMs,
+            WriteTimeout = writeTimeoutMs,
+            DtrEnable = true
+        };
 
         try
         {
-            // シリアルポートを開き、受信用スレッドを開始
             serial.Open();
-            isRunning = true;
-            readThread = new Thread(ReadSerialData);
-            readThread.Start();
+            if (!isRunning)
+            {
+                isRunning = true;
+                readThread = new Thread(ReadSerialData) { IsBackground = true, Name = "SerialReadThread" };
+                readThread.Start();
+            }
+            requestReconnect = false;
+            Debug.Log("[Serial] Opened " + portName + " @" + baudRate);
         }
         catch (Exception e)
         {
-            Debug.LogError("Failed to open serial port: " + e.Message);
+            RateLimitedWarn("[Serial] ポート接続失敗 (" + portName + "): " + e.Message);
+            ScheduleReconnect();
         }
     }
 
     // オブジェクト破棄時に呼ばれるクリーンアップ処理
     void OnDestroy()
     {
-        // スレッドを停止し、シリアルポートを閉じる
-        isRunning = false;
-        if (readThread != null && readThread.IsAlive)
-            readThread.Join();
+        Shutdown();
+    }
 
-        if (serial != null && serial.IsOpen)
-            serial.Close();
+    void OnApplicationQuit()
+    {
+        Shutdown();
+    }
+
+    private void Shutdown()
+    {
+        isRunning = false;
+        try
+        {
+            if (readThread != null && readThread.IsAlive)
+            {
+                if (!readThread.Join(500))
+                {
+                    readThread.Interrupt();
+                }
+            }
+        }
+        catch { /* ignore */ }
+
+        if (serial != null)
+        {
+            try
+            {
+                if (serial.IsOpen) serial.Close();
+            }
+            catch { }
+            finally
+            {
+                serial.Dispose();
+            }
+            serial = null;
+        }
     }
 
     // シリアルデータを非同期に読み取る処理（ヘッダー同期付き）
@@ -75,36 +157,91 @@ public class Get_Information : MonoBehaviour
     {
         while (isRunning)
         {
+            if (serial == null || !serial.IsOpen)
+            {
+                if (requestReconnect && (DateTime.UtcNow - lastReconnectAttempt).TotalSeconds >= reconnectInterval)
+                {
+                    lastReconnectAttempt = DateTime.UtcNow;
+                    OpenPort();
+                }
+                Thread.Sleep(50);
+                continue;
+            }
+
             try
             {
-                // 'S'（ヘッダー文字）を受信するまで読み飛ばす
-                while (serial.ReadByte() != 'S')
+                // ヘッダー同期 (非ブロッキングループ)。ReadByte がタイムアウトしたら再ループ。
+                int headerByte = -1;
+                while (isRunning && serial.IsOpen)
                 {
-                    if (!isRunning) return;
+                    try
+                    {
+                        headerByte = serial.ReadByte();
+                        if (headerByte == 'S') break;
+                    }
+                    catch (TimeoutException)
+                    {
+                        // continue to next loop iteration without spamming logs
+                        continue;
+                    }
                 }
+                if (!isRunning) break;
+                if (headerByte != 'S') continue; // 何らかの理由で抜けた
 
-                // ヘッダー後の8バイトをバッファに読み込む（完全受信までループ）
                 int bytesRead = 0;
-                while (bytesRead < messageSize)
+                while (bytesRead < messageSize && isRunning && serial.IsOpen)
                 {
-                    bytesRead += serial.Read(buffer, bytesRead, messageSize - bytesRead);
+                    try
+                    {
+                        int r = serial.Read(buffer, bytesRead, messageSize - bytesRead);
+                        if (r > 0) bytesRead += r; // r==0 は ReadTimeout の可能性
+                    }
+                    catch (TimeoutException)
+                    {
+                        // 再試行
+                        continue;
+                    }
                 }
+                if (bytesRead < messageSize) continue; // 不完全 → 破棄
 
-                // ピッチ・ロール・ヨー（角度）はint16で0.1度単位なのでfloatに変換
+                // 受信データ変換
                 for (int i = 0; i < 3; i++)
                 {
                     short raw = BitConverter.ToInt16(buffer, i * 2);
                     receivedData[i] = raw / 10.0f;
                 }
-
-            // bend（float値 *10 をint16_tに変換されたもの）を受信
-            short bendRaw = BitConverter.ToInt16(buffer, 6);  // 6バイト目から2バイト
-            receivedData[3] = bendRaw / 10.0f;  // 0.1刻みで変換
+                short bendRaw = BitConverter.ToInt16(buffer, 6);
+                receivedData[3] = bendRaw / 10.0f;
+            }
+            catch (TimeoutException)
+            {
+                // 無視（ループ継続）。ログレート制限で出したい場合は以下：
+                RateLimitedWarn("[Serial] Read timeout");
             }
             catch (Exception e)
             {
-                Debug.LogWarning("Serial Read Error: " + e.Message);
+                RateLimitedWarn("[Serial] Read error: " + e.Message);
+                // 切断判定
+                if (!serial.IsOpen)
+                {
+                    ScheduleReconnect();
+                }
             }
+        }
+    }
+
+    private void ScheduleReconnect()
+    {
+        requestReconnect = true;
+        lastReconnectAttempt = DateTime.UtcNow.AddSeconds(-reconnectInterval); // すぐに試行させる
+    }
+
+    private void RateLimitedWarn(string msg)
+    {
+        if ((DateTime.UtcNow - lastWarnLogTime).TotalSeconds >= warnLogInterval)
+        {
+            lastWarnLogTime = DateTime.UtcNow;
+            Debug.LogWarning(msg);
         }
     }
 
@@ -113,14 +250,42 @@ public class Get_Information : MonoBehaviour
     {
         if (serial != null && serial.IsOpen)
         {
-            serial.Write(new byte[] { msg }, 0, 1);
-            Debug.Log($"[WarningSystem] Sent warning level command: '{(char)msg}'");
+            try
+            {
+                serial.Write(new byte[] { msg }, 0, 1);
+                Debug.Log($"[WarningSystem] Sent warning level command: '{(char)msg}'");
+            }
+            catch (Exception e)
+            {
+                RateLimitedWarn("[Serial] Write failed: " + e.Message);
+                if (!serial.IsOpen) ScheduleReconnect();
+            }
+        }
+        else
+        {
+            RateLimitedWarn("[Serial] Port not open. Cannot send.");
         }
     }
 
     // 外部から現在の受信データ（float[4]）を取得するためのゲッター
-    public float[] GetReceivedData()
+    public float[] GetReceivedData() => receivedData;
+
+#if UNITY_EDITOR
+    [CustomEditor(typeof(Get_Information))]
+    private class GetInformationEditor : Editor
     {
-        return receivedData;
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+            var gi = (Get_Information)target;
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Runtime Status", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("IsOpen", (gi.serial != null && gi.serial.IsOpen).ToString());
+            if (GUILayout.Button("Reconnect"))
+            {
+                gi.ScheduleReconnect();
+            }
+        }
     }
+#endif
 }
