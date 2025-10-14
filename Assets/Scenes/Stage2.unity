@@ -2799,7 +2799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e195336d4751b164eb930766e1f84d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bendWall: 7
+  bendWall: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
